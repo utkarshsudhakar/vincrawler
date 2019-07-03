@@ -32,7 +32,6 @@ func RespondWithJSON(vin []string, w http.ResponseWriter, r *http.Request) {
 func getVin(res http.ResponseWriter, w *http.Request) {
 	var vin []string
 
-	//url := "https://carstory.com/cars/make-dodge/model-caravan"
 	url := w.URL.Query().Get("url")
 	resp, err := soup.Get(url)
 	if err != nil {
