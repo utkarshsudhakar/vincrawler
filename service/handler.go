@@ -35,10 +35,10 @@ func getVin(res http.ResponseWriter, w *http.Request) {
 	url := w.URL.Query().Get("url")
 	resp, err := soup.Get(url)
 	if err != nil {
-		fmt.Println("err")
+		fmt.Println("error in fetching the data from url ")
 	}
 	//fmt.Println(resp)
-	r, _ := regexp.Compile("vin\":\"(.*?)\"")
+	r, _ := regexp.Compile("vin\":\"(\\w.+?)\"")
 	f := r.FindAllStringSubmatch(resp, -1)
 	for i := range f {
 		vin = append(vin, f[i][1])
